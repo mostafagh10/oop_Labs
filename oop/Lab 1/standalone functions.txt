@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+class Complex{
+   int real;
+   int imagine;
+
+   public:
+       void setReal(int real2){
+           real = real2;
+       }
+       void setImagine(int imagine2){
+           imagine = imagine2;
+       }
+       int getReal(){
+           return real;
+       }
+       int getImagine(){
+           return imagine;
+       }
+
+};
+void printNumbers(Complex c);
+Complex subNumbers(Complex c1,Complex c2);
+Complex addNumbers(Complex c1,Complex c2);
+int main()
+{
+    Complex c1,c2;
+    c1.setReal(50);
+    c1.setImagine(15);
+    c2.setReal(30);
+    c2.setImagine(15);
+    //by using standalone function
+    printNumbers(c1);
+    //by standalone function
+    Complex c4 = addNumbers(c1,c2);
+    printNumbers(c4);
+    //by standalone function
+    Complex c6 = subNumbers(c1,c2);
+    printNumbers(c6);
+
+    return 0;
+}
+void printNumbers(Complex c){
+     if(c.getImagine() > 0){
+        cout<<c.getReal()<<" +"<<c.getImagine()<<"i \n";
+      }else if(c.getImagine() == 0){
+        cout<<c.getReal()<<"\n";
+      }else{
+        cout<<c.getReal()<<c.getImagine()<<"i \n";
+      }
+}
+
+Complex addNumbers(Complex c1,Complex c2){
+    Complex c3;
+     c3.setReal(c1.getReal()+c2.getReal());
+     c3.setImagine(c1.getImagine()+c2.getImagine());
+     return c3;
+}
+
+Complex subNumbers(Complex c1,Complex c2){
+    Complex c3;
+     c3.setReal(c1.getReal()-c2.getReal());
+     c3.setImagine(c1.getImagine()-c2.getImagine());
+     return c3;
+}
+

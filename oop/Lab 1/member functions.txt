@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+class Complex{
+   int real;
+   int imagine;
+
+   public:
+       void setReal(int real2){
+           real = real2;
+       }
+       void setImagine(int imagine2){
+           imagine = imagine2;
+       }
+       int getReal(){
+           return real;
+       }
+       int getImagine(){
+           return imagine;
+       }
+       //print member function
+       void print(){
+           if(imagine > 0){
+            cout<<real<<" +"<<imagine<<"i \n";
+           }else if(imagine == 0){
+               cout<<real<<"\n";
+           }else{
+           cout<<real<<imagine<<"i \n";
+           }
+       }
+       //add member function
+       Complex add(Complex c2){
+           Complex c11;
+           c11.setReal(real+c2.getReal());
+           c11.setImagine(imagine+c2.getImagine());
+           return c11;
+       }
+       //sub member function
+       Complex sub(Complex c2){
+           Complex c11;
+           c11.setReal(real-c2.getReal());
+           c11.setImagine(imagine-c2.getImagine());
+           return c11;
+       }
+
+};
+int main()
+{
+    Complex c1,c2;
+    c1.setReal(50);
+    c1.setImagine(15);
+    c2.setReal(30);
+    c2.setImagine(15);
+    //by using member function
+    c1.print();
+    //by member function
+    Complex c3 = c1.add(c2);
+    c3.print();
+    //by member function
+    Complex c5 = c1.sub(c2);
+    c5.print();
+    return 0;
+}
+
