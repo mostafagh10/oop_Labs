@@ -1,0 +1,165 @@
+#include <iostream>
+using namespace std;
+class Complex{
+   int real;
+   int imagine;
+
+   public:
+       /*
+       Complex(int x,int y){
+           real=x;
+           imagine = y;
+       }
+       */
+       void setComplex(int real2,int imagine2){
+            real = real2;
+            imagine = imagine2;
+       }
+       int getReal(){
+           return real;
+       }
+       int getImagine(){
+           return imagine;
+       }
+       //print member function
+       void print(){
+           if(imagine > 0){
+            cout<<real<<" +"<<imagine<<"i \n";
+           }else if(imagine == 0){
+               cout<<real<<"\n";
+           }else{
+           cout<<real<<imagine<<"i \n";
+           }
+       }
+
+       // q1
+       Complex operator + (Complex & c){
+           real = real+c.real;
+           imagine = imagine+c.imagine;
+           return *this;
+       }
+
+
+       //q2
+       Complex operator - (Complex & c){
+           real = real-c.real;
+           imagine = imagine-c.imagine;
+           return *this;
+       }
+
+       //q3
+        Complex operator + (int x){
+            Complex res;
+           res.setComplex(real+x,imagine);
+           return res;
+       }
+
+       //q4
+        Complex operator - (int x){
+           Complex res;
+           res.setComplex(real-x,imagine);
+           return res;
+       }
+
+       //q7
+       int operator == (Complex &c1){
+           if(real == c1.real && imagine == c1.imagine){
+            return 1;
+           }else{
+               return 0;
+           }
+       }
+
+       //q8
+       Complex operator += (Complex &c){
+           real = real+c.real;
+           imagine = imagine+c.imagine;
+           return *this;
+       }
+
+       //q9
+        Complex operator ++ (){
+           real = real+1;
+           imagine = imagine + 1;
+           return *this;
+       }
+
+       //q10
+       Complex operator ++ (int){
+           Complex temp = *this;
+           real = real+1;
+           imagine = imagine;
+           return temp;
+       }
+
+       //q11
+       operator float(){
+           return real;
+       }
+
+};
+//q5
+Complex operator + (int x,Complex &c){
+    Complex c1;
+    c1.setComplex(c.getReal()+x,c.getImagine());
+    return c1;
+}
+
+//q6
+Complex operator - (int x,Complex &c){
+    Complex c1;
+    c1.setComplex(c.getReal()-x,c.getImagine());
+    return c1;
+}
+
+int main()
+{
+    Complex c1,c2,c3;
+    c1.setComplex(50,15);
+    c2.setComplex(30,15);
+    //q1
+    //c3 = c1+c2;
+    //c3.print();
+
+    //q2
+    //c3 = c1-c2;
+    //c3.print();
+
+    //q3
+    //c3 = c1+5;
+    //c3.print();
+
+    //q4
+    //c3 = c1-5;
+    //c3.print();
+
+    //q5
+    //c3 = 5+c1;
+    //c3.print();
+
+    //q6
+    //c3 = 5-c1;
+    //c3.print();
+
+    //q7
+    //cout<<(c1==c2)<<endl;
+
+    //q8
+    //c1+= c2;
+    //c1.print();
+
+    //q9
+    //++c1;
+    //c1.print();
+
+    //q10
+    //c3=c1++;
+    //c3.print();
+
+    //q11
+    //cout<<(float)c1<<endl;
+
+
+    return 0;
+}
+
