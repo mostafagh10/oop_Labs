@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+template <class H>
+class Stack{
+    H* arr;
+    int size1;
+    int top;
+public:
+    Stack(int x){
+        size1 = x;
+        top=-1;
+        arr=new H[size1];
+    }
+
+    void push(H n){
+        if(top >= size1-1){
+            extend();
+        }
+        top++;
+        arr[top] = n;
+    }
+
+    void pop(){
+        if(top == -1){
+            cout<<"----------------------------- \n";
+             cout<<"empty array \n";
+        }else{
+            cout<<"----------------------------- \n";
+            cout<<"deleted element = "<<arr[top]<<endl;
+            top--;
+        }
+    }
+
+    void print(){
+        cout<<"----------------------------- \n";
+        for(int i=0 ; i<=top ; i++){
+            cout<<arr[i]<<endl;
+        }
+    }
+
+    void extend(){
+        size1*=2;
+        H* arr2;
+        arr2 = new H[size1];
+         for(int i=0 ; i<=top ; i++){
+            arr2[i] = arr[i];
+        }
+        delete[] arr;
+        arr = arr2;
+
+    }
+
+
+
+};
+
+int main()
+{
+    Stack <double> s1(5);
+    s1.push(3.568);
+    s1.push(5.5);
+    s1.push(7.5);
+    s1.push(3.5);
+    s1.push(2.7);
+    s1.push(9.7);
+    s1.print();
+    return 0;
+}
